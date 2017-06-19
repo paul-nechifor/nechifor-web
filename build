@@ -8,6 +8,7 @@ main() {
 
     get_project circuits
     get_project nechifor-home
+    get_project check-your-privilege
 
     build_docker
 }
