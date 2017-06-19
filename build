@@ -1,0 +1,32 @@
+#!/bin/bash -e
+
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+project_dir="$root/projects"
+
+main() {
+    mkdir -p "$project_dir"
+
+    get_project circuits
+    get_project nechifor-home
+
+    build_docker
+}
+
+get_project() {
+    local name="$1"
+    local repo="https://github.com/paul-nechifor/$name"
+    cd "$project_dir"
+
+    if [[ -e "$name" ]]; then
+        (cd "$name" && git pull)
+    else
+        git clone "$repo"
+    fi
+}
+
+build_docker() {
+    cd "$root"
+    docker build -t nechifor-web .
+}
+
+main "$@"
