@@ -13,6 +13,8 @@ ADD nginx.conf /etc/nginx/nginx.conf
 ADD projects/nechifor-home/dist /app
 ADD projects/circuits/dist /app/circuits
 ADD projects/check-your-privilege/dist /app/check-your-privilege
+ADD projects/pseudoromanian/dist /app/pseudoromana
+ADD projects/sidrem/dist /app/sidrem
 
 EXPOSE 80
 

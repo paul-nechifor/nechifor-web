@@ -6,9 +6,11 @@ project_dir="$root/projects"
 main() {
     mkdir -p "$project_dir"
 
-    get_project circuits
     get_project nechifor-home
+    get_project circuits
     get_project check-your-privilege
+    get_project pseudoromanian
+    get_project sidrem
 
     build_docker
 }
