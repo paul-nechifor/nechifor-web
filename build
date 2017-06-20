@@ -2,8 +2,16 @@
 
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 project_dir="$root/projects"
+version=1
 
 main() {
+    cd "$root"
+
+    if [[ $1 ]]; then
+        cmd_"$1"
+        return
+    fi
+
     mkdir -p "$project_dir"
 
     get_project nechifor-home
@@ -29,7 +37,18 @@ get_project() {
 
 build_docker() {
     cd "$root"
+
     docker build -t nechifor-web .
+    docker run --name temp_nechifor nechifor-web true
+    docker export temp_nechifor | docker import - nechifor-web:"$version"
+    docker rm temp_nechifor
+
+    docker save nechifor-web:"$version" |
+    xz -9 -c - > nechifor-web-"$version".tar.xz
+}
+
+cmd_run() {
+    docker run -it -p 80:80 --rm nechifor-web:"$version" nginx -g 'daemon off;'
 }
 
 main "$@"

@@ -14,6 +14,8 @@
 
 - Add more links between repos and sites and between sites and used packages.
 
+- See if you can avoid installing so many packages related to nginx.
+
 ## License
 
 ISC
