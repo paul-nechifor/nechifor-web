@@ -21,6 +21,7 @@ main() {
     get_project sidrem
     get_project keygen-radio
     get_project papers
+    get_project sibf
 
     process_keygen_radio
 

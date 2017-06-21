@@ -21,6 +21,9 @@
 
 - Each site should have a link to the github page easily visible.
 
+- Add script that creates a map of every link in the docker container. Use it to
+  detect broken links.
+
 ## License
 
 ISC
