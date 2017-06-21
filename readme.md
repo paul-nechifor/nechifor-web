@@ -16,6 +16,9 @@
 
 - See if you can avoid installing so many packages related to nginx.
 
+- Add a blog page about movie histograms with the small package I created. Show
+  it for some popular films.
+
 ## License
 
 ISC

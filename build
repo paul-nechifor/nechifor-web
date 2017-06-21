@@ -19,6 +19,8 @@ main() {
     get_project check-your-privilege
     get_project pseudoromanian
     get_project sidrem
+    get_project keygen-radio
+    process_keygen_radio
 
     build_docker
 }
@@ -49,6 +51,12 @@ build_docker() {
 
 cmd_run() {
     docker run -it -p 80:80 --rm nechifor-web:"$version" nginx -g 'daemon off;'
+}
+
+process_keygen_radio() {
+    cd "$project_dir/keygen-radio"
+    [[ -d tunes ]] || scripts/download-music-pack
+    rsync -a --del tunes/files/ dist/tunes/
 }
 
 main "$@"

@@ -15,6 +15,7 @@ ADD projects/circuits/dist /app/circuits
 ADD projects/check-your-privilege/dist /app/check-your-privilege
 ADD projects/pseudoromanian/dist /app/pseudoromana
 ADD projects/sidrem/dist /app/sidrem
+ADD projects/keygen-radio/dist /app/keygen-radio
 
 EXPOSE 80
 
