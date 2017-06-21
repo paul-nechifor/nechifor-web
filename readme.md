@@ -19,6 +19,8 @@
 - Add a blog page about movie histograms with the small package I created. Show
   it for some popular films.
 
+- Each site should have a link to the github page easily visible.
+
 ## License
 
 ISC

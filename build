@@ -20,6 +20,8 @@ main() {
     get_project pseudoromanian
     get_project sidrem
     get_project keygen-radio
+    get_project papers
+
     process_keygen_radio
 
     build_docker
