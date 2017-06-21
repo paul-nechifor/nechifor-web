@@ -18,6 +18,7 @@ ADD projects/sidrem/dist /app/sidrem
 ADD projects/keygen-radio/dist /app/keygen-radio
 ADD projects/papers/dist /app/papers
 ADD projects/sibf/dist /app/sibf
+ADD projects/chess-puzzles/dist /app/chess-puzzles
 
 EXPOSE 80
 
