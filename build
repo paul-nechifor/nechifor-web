@@ -23,6 +23,7 @@ main() {
     get_project papers
     get_project sibf
     get_project chess-puzzles
+    get_project identitate-falsa
 
     process_keygen_radio
 

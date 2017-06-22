@@ -24,6 +24,13 @@
 - Add script that creates a map of every link in the docker container. Use it to
   detect broken links.
 
+- Use supervisord to keep both PHP and Nginx alive. See
+  https://hub.docker.com/r/amontaigu/nginx-php/ for an example.
+
+- Most of the sites are missing titles.
+
+- Review **ALL** the files to make sure everything was converted okay.
+
 ## License
 
 ISC

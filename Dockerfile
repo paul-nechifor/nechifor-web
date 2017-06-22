@@ -19,6 +19,7 @@ ADD projects/keygen-radio/dist /app/keygen-radio
 ADD projects/papers/dist /app/papers
 ADD projects/sibf/dist /app/sibf
 ADD projects/chess-puzzles/dist /app/chess-puzzles
+ADD projects/identitate-falsa/dist /app/identitate-falsa
 
 EXPOSE 80
 
