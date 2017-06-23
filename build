@@ -27,6 +27,7 @@ main() {
     get_project horoscop
     get_project jpeg-enricher
     get_project nechifor-blog
+    get_project lemon-cake
 
     process_keygen_radio
 
