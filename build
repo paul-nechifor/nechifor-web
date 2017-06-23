@@ -28,6 +28,7 @@ main() {
     get_project jpeg-enricher
     get_project nechifor-blog
     get_project lemon-cake
+    get_project software-security-slides
 
     process_keygen_radio
 

@@ -24,6 +24,10 @@ ADD projects/horoscop/dist /app/horoscop
 ADD projects/jpeg-enricher/dist /app/jpeg-enricher
 ADD projects/nechifor-blog/dist /app/
 ADD projects/lemon-cake/dist /app/lemon-cake
+ADD projects/software-security-slides/clang-static-analyzer /app/clang-static-analyzer
+ADD projects/software-security-slides/executable-code-injection /app/executable-code-injection
+ADD projects/software-security-slides/using-openvas /app/using-openvas
+ADD projects/software-security-slides/using-metasploit /app/using-metasploit
 
 EXPOSE 80
 
