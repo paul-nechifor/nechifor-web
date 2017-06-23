@@ -22,6 +22,7 @@ ADD projects/chess-puzzles/dist /app/chess-puzzles
 ADD projects/identitate-falsa/dist /app/identitate-falsa
 ADD projects/horoscop/dist /app/horoscop
 ADD projects/jpeg-enricher/dist /app/jpeg-enricher
+ADD projects/nechifor-blog/dist /app/
 
 EXPOSE 80
 

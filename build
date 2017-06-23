@@ -26,6 +26,7 @@ main() {
     get_project identitate-falsa
     get_project horoscop
     get_project jpeg-enricher
+    get_project nechifor-blog
 
     process_keygen_radio
 
