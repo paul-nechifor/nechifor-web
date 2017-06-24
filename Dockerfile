@@ -30,6 +30,7 @@ ADD projects/software-security-slides/using-openvas /app/using-openvas
 ADD projects/software-security-slides/using-metasploit /app/using-metasploit
 ADD projects/meet-firefox/dist /app/meet-firefox
 ADD projects/italia-fascista/dist /app/italia-fascista
+ADD projects/rstsd/dist /app/rstsd
 
 EXPOSE 80
 
