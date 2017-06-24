@@ -36,6 +36,7 @@ RUN mkdir -p /app/multilatex-dissertation
 ADD projects/multilatex-dissertation/lucrare.pdf /app/multilatex-dissertation/lucrare.pdf
 ADD projects/multilatex-dissertation/rezumat.pdf /app/multilatex-dissertation/rezumat.pdf
 ADD projects/multilatex-dissertation/presentation/build /app/multilatex-dissertation/presentation
+ADD projects/xslt-blog/dist /app/xslt-blog
 
 EXPOSE 80
 
