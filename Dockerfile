@@ -31,6 +31,7 @@ ADD projects/software-security-slides/using-metasploit /app/using-metasploit
 ADD projects/meet-firefox/dist /app/meet-firefox
 ADD projects/italia-fascista/dist /app/italia-fascista
 ADD projects/rstsd/dist /app/rstsd
+ADD projects/go-concurrency/build /app/go-concurrency
 
 EXPOSE 80
 

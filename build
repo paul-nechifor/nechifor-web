@@ -32,6 +32,7 @@ main() {
     get_project meet-firefox
     get_project italia-fascista
     get_project rstsd
+    get_project go-concurrency
 
     process_keygen_radio
 
