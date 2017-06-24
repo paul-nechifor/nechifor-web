@@ -38,6 +38,7 @@ ADD projects/multilatex-dissertation/rezumat.pdf /app/multilatex-dissertation/re
 ADD projects/multilatex-dissertation/presentation/build /app/multilatex-dissertation/presentation
 ADD projects/xslt-blog/dist /app/xslt-blog
 ADD projects/facetrain/presentation/build /app/facetrain
+ADD projects/best-black-metal-albums/build /app/best-black-metal-albums
 
 EXPOSE 80
 
