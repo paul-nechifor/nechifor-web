@@ -28,6 +28,7 @@ ADD projects/software-security-slides/clang-static-analyzer /app/clang-static-an
 ADD projects/software-security-slides/executable-code-injection /app/executable-code-injection
 ADD projects/software-security-slides/using-openvas /app/using-openvas
 ADD projects/software-security-slides/using-metasploit /app/using-metasploit
+ADD projects/meet-firefox/dist /app/meet-firefox
 
 EXPOSE 80
 

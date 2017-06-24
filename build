@@ -29,6 +29,7 @@ main() {
     get_project nechifor-blog
     get_project lemon-cake
     get_project software-security-slides
+    get_project meet-firefox
 
     process_keygen_radio
 
