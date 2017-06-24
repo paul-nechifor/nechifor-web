@@ -32,6 +32,10 @@ ADD projects/meet-firefox/dist /app/meet-firefox
 ADD projects/italia-fascista/dist /app/italia-fascista
 ADD projects/rstsd/dist /app/rstsd
 ADD projects/go-concurrency/build /app/go-concurrency
+RUN mkdir -p /app/multilatex-dissertation
+ADD projects/multilatex-dissertation/lucrare.pdf /app/multilatex-dissertation/lucrare.pdf
+ADD projects/multilatex-dissertation/rezumat.pdf /app/multilatex-dissertation/rezumat.pdf
+ADD projects/multilatex-dissertation/presentation/build /app/multilatex-dissertation/presentation
 
 EXPOSE 80
 

@@ -33,6 +33,7 @@ main() {
     get_project italia-fascista
     get_project rstsd
     get_project go-concurrency
+    get_project multilatex-dissertation
 
     process_keygen_radio
 
