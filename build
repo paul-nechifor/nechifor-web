@@ -35,6 +35,7 @@ main() {
     get_project go-concurrency
     get_project multilatex-dissertation
     get_project xslt-blog
+    get_project facetrain
 
     process_keygen_radio
 

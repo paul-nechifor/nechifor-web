@@ -37,6 +37,7 @@ ADD projects/multilatex-dissertation/lucrare.pdf /app/multilatex-dissertation/lu
 ADD projects/multilatex-dissertation/rezumat.pdf /app/multilatex-dissertation/rezumat.pdf
 ADD projects/multilatex-dissertation/presentation/build /app/multilatex-dissertation/presentation
 ADD projects/xslt-blog/dist /app/xslt-blog
+ADD projects/facetrain/presentation/build /app/facetrain
 
 EXPOSE 80
 
