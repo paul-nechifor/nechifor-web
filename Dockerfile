@@ -39,6 +39,7 @@ ADD projects/multilatex-dissertation/presentation/build /app/multilatex-disserta
 ADD projects/xslt-blog/dist /app/xslt-blog
 ADD projects/facetrain/presentation/build /app/facetrain
 ADD projects/best-black-metal-albums/build /app/best-black-metal-albums
+ADD projects/nechifor-projects/dist /app/projects
 
 EXPOSE 80
 

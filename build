@@ -37,6 +37,7 @@ main() {
     get_project xslt-blog
     get_project facetrain
     get_project best-black-metal-albums
+    get_project nechifor-projects
 
     process_keygen_radio
 

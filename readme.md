@@ -31,6 +31,12 @@
 
 - Review **ALL** the files to make sure everything was converted okay.
 
+- Add instructions for robots.
+
+- Add favicons to all.
+
+- Use HTTPS.
+
 ## License
 
 ISC
