@@ -37,6 +37,7 @@
 
 - Use HTTPS.
 
+- Configure Nginx better, including file expiration times.
 ## License
 
 ISC

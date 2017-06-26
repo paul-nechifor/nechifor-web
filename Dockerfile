@@ -1,14 +1,17 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install nginx -y && \
-    rm -fr /var/lib/apt/lists/*
-
-# Forward request and error logs to docker log collector.
-RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+    apt-get install nginx php7.0-fpm supervisor -y && \
+    rm -fr /var/lib/apt/lists/* && \
+    ln -sf /dev/stdout /var/log/nginx/access.log && \
+    ln -sf /dev/stderr /var/log/nginx/error.log && \
+    mkdir /run/php && chmod 777 /run/php && \
+    sed -i \
+    -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
+    /etc/php/7.0/fpm/pool.d/www.conf
 
 ADD nginx.conf /etc/nginx/nginx.conf
+ADD supervisord.conf /etc/supervisord.conf
 
 ADD projects/nechifor-home/dist /app
 ADD projects/circuits/dist /app/circuits
@@ -40,9 +43,11 @@ ADD projects/xslt-blog/dist /app/xslt-blog
 ADD projects/facetrain/presentation/build /app/facetrain
 ADD projects/best-black-metal-albums/build /app/best-black-metal-albums
 ADD projects/nechifor-projects/dist /app/projects
+ADD projects/college-website/dist /app/college-website
 
 EXPOSE 80
 
+# TODO: Is this required?
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

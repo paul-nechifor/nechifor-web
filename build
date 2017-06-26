@@ -38,6 +38,7 @@ main() {
     get_project facetrain
     get_project best-black-metal-albums
     get_project nechifor-projects
+    get_project college-website
 
     process_keygen_radio
 
@@ -69,7 +70,7 @@ build_docker() {
 }
 
 cmd_run() {
-    docker run -it -p 80:80 --rm nechifor-web:"$version" nginx -g 'daemon off;'
+    docker run -it -p 80:80 --rm nechifor-web:"$version" /usr/bin/supervisord -n -c /etc/supervisord.conf
 }
 
 process_keygen_radio() {
