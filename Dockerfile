@@ -46,6 +46,7 @@ ADD projects/nechifor-projects/dist /app/projects
 ADD projects/college-website/dist /app/college-website
 ADD projects/college-website-2/dist /app/college-website-2
 ADD projects/paul-scripts/dist /app/paul-scripts
+ADD projects/minimul/dist /app/minimul
 
 EXPOSE 80
 
