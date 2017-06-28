@@ -40,6 +40,7 @@ main() {
     get_project nechifor-projects
     get_project college-website
     get_project college-website-2
+    get_project paul-scripts
 
     process_keygen_radio
 
