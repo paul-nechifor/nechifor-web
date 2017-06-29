@@ -10,9 +10,6 @@ RUN apt-get update && \
     -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
     /etc/php/7.0/fpm/pool.d/www.conf
 
-ADD nginx.conf /etc/nginx/nginx.conf
-ADD supervisord.conf /etc/supervisord.conf
-
 ADD projects/nechifor-home/dist /app
 ADD projects/circuits/dist /app/circuits
 ADD projects/check-your-privilege/dist /app/check-your-privilege
@@ -47,6 +44,10 @@ ADD projects/college-website/dist /app/college-website
 ADD projects/college-website-2/dist /app/college-website-2
 ADD projects/paul-scripts/dist /app/paul-scripts
 ADD projects/minimul/dist /app/minimul
+ADD errors /app/errors
+
+ADD nginx.conf /etc/nginx/nginx.conf
+ADD supervisord.conf /etc/supervisord.conf
 
 EXPOSE 80
 
