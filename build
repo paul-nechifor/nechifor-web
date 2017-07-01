@@ -43,6 +43,7 @@ main() {
     get_project paul-scripts
     get_project minimul
     get_project dotfiles
+    get_project torus-cycle
 
     process_keygen_radio
 

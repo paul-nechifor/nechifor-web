@@ -46,6 +46,7 @@ ADD projects/paul-scripts/dist /app/paul-scripts
 ADD projects/minimul/dist /app/minimul
 ADD errors /app/errors
 ADD projects/dotfiles/docs/* /app/dotfiles/
+ADD projects/torus-cycle/dist /app/torus-cycle
 
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
