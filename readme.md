@@ -15,6 +15,26 @@ Afterwards you can run it for testing purposes with:
 
 ## TODO
 
+- Add `<meta name='description' ...> to all pages.
+
+- Configure Content-Security-Policy for Nginx. See
+  https://content-security-policy.com/ . Possible just this:
+
+      add_header Content-Security-Policy "default-src 'self';";
+
+- Configure X-Frame-Options to prevent clickjacking.
+
+- ```
+  Configure an "X-XSS-Protection" HTTP header. Add the "X-XSS-Protection" HTTP
+  header with "1; mode=block" as value (1 to indicate the activation, and
+  mode=block to indicate that the entire page must be blocked if a problem
+  occurs).
+  ```
+
+- Hide Nginx server version. Same for PHP.
+
+- Add a sitemap.
+
 - Make sure to mark things that are generated as non-indexable by Google.
 
 - Make sites accessible on Phones.
