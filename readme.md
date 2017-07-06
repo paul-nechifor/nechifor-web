@@ -1,5 +1,18 @@
 # Nechifor Web
 
+## Usage
+
+You need to have Docker installed and `7za` (you can install it on Ubuntu with
+`sudo apt install p7zip-full`).
+
+To build everything run:
+
+    ./build
+
+Afterwards you can run it for testing purposes with:
+
+    ./build run
+
 ## TODO
 
 - Make sure to mark things that are generated as non-indexable by Google.
