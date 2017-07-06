@@ -47,6 +47,17 @@ Afterwards you can run it for testing purposes with:
 
 - Add more links between repos and sites and between sites and used packages.
 
+- Every page should have a link to the git repository, the the homepage and to
+  the list of projects.
+
+- The list of projects should mention where they can see all my repositories on
+  github.
+
+- Make sure each page specifies the language it's in.
+
+- Eliminate all CDNs. I just witnesed a Bootstrap CDN take 6.72 s to load.
+  That's absurd. Include Bootstrap and jQuery for now.
+
 - See if you can avoid installing so many packages related to nginx.
 
 - Add a blog page about movie histograms with the small package I created. Show
