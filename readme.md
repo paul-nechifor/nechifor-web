@@ -82,6 +82,9 @@ Afterwards you can run it for testing purposes with:
 - Use HTTPS.
 
 - Configure Nginx better, including file expiration times.
+
+- Add the 500 error.
+
 ## License
 
 ISC
