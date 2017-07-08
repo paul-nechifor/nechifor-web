@@ -83,6 +83,37 @@ function processPage(url, $) {
   if (!$('head meta[charset="utf-8"]').length) {
     console.log(url, 'missing <meta charset="utf-8">');
   }
+
+  const title = $('head title');
+  if (!title.length || title.text().length < 5) {
+    console.log(url, 'bad head title');
+  }
+
+  const equiv = $('head meta[http-equiv="x-ua-compatible"]');
+  if (!equiv.length || equiv.attr('content') !== 'ie=edge') {
+    console.log(url, 'bad http-equiv ie=edge');
+  }
+
+  const viewport = $('head meta[name=viewport]');
+  if (
+    !viewport.length ||
+    viewport.attr('content') !== 'width=device-width,initial-scale=1'
+  ) {
+    console.log(url, 'bad meta viewport');
+  }
+
+  const largeIcon = $('head link[rel="apple-touch-icon"]');
+  if (!largeIcon.length || largeIcon.attr('href') !== '/favicon152.png') {
+    console.log(url, 'bad link[rel="apple-touch-icon"]');
+  }
+
+  if (!$('a[href="/"]').length) {
+    console.log(url, 'missing link to home');
+  }
+
+  if (!$('a[href="/projects"]').length) {
+    console.log(url, 'missing link to projects');
+  }
 }
 
 function getInnerLink(i) {
