@@ -85,6 +85,12 @@ Afterwards you can run it for testing purposes with:
 
 - Add the 500 error.
 
+- Add print stylesheets?
+
+- Add links to my Twitter page.
+
+- The scanner should spell check every page.
+
 ## License
 
 ISC

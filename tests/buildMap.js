@@ -119,6 +119,15 @@ function processPage(url, $) {
   if (lang !== 'en' && lang !== 'ro') {
     console.log(url, 'missing <html lang="...">');
   }
+
+  const desc = $('meta[description]');
+  if (!desc.length || desc.text().length < 5) {
+    console.log(url, 'bad <meta name="description" ...>');
+  }
+
+  if (!$('h1').length) {
+    console.log(url, 'missing <h1>');
+  }
 }
 
 function getInnerLink(i) {
