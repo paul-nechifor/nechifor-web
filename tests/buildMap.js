@@ -114,6 +114,11 @@ function processPage(url, $) {
   if (!$('a[href="/projects"]').length) {
     console.log(url, 'missing link to projects');
   }
+
+  const lang = $('html').attr('lang');
+  if (lang !== 'en' && lang !== 'ro') {
+    console.log(url, 'missing <html lang="...">');
+  }
 }
 
 function getInnerLink(i) {
