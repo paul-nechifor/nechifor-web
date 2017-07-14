@@ -1,3 +1,4 @@
+const URL = require('url');
 const _ = require('lodash');
 const async = require('async');
 const cheerio = require('cheerio');
@@ -6,21 +7,16 @@ const request = require('request');
 const root = process.env.site || 'http://localhost';
 
 const outerLinks = [];
-const innerLinks = ['/'];
-
-const innerLinksPrefix = [
-  '/',
-  root,
-];
-
-const seenLink = {'/': true};
+const innerLinks = [root + '/'];
+const seenLink = {};
 
 function loadPage(url, cb) {
   request(url, (err, res, html) => {
     if (err) {
       return cb(err);
     }
-    cb(null, cheerio.load(html));
+    html = removeNonIndexablePart(html);
+    cb(null, cheerio.load(html), html);
   });
 }
 
@@ -45,31 +41,44 @@ function loadAllLinks(cb) {
 }
 
 function processInnerLink(i, cb) {
-  const url = getInnerLink(i);
+  const url = innerLinks[i];
   if (seenLink[url]) {
     return cb();
   }
+  seenLink[url] = true;
 
-  loadPage(url, (err, $) => {
+  loadPage(url, (err, $, html) => {
     if (err) {
       return cb(err);
     }
 
-    processPage(url, $);
+    processPage(url, $, html);
 
     $('a[href]').each(function () {
-      const href = $(this).attr('href');
+      let href = $(this).attr('href');
+
+      href = href.replace(/^https:\/\//, 'http://');
+      href = href.replace(/^http:\/\/nechifor\.net/, root);
+      href = href.replace(/#.*/, '');
+
+      if (href.indexOf('http://') !== 0) {
+        if (href[0] === '/') {
+          href = root + href;
+        } else {
+          href = URL.resolve(url, href);
+        }
+      }
+
+      if (href === root) {
+        href += '/';
+      }
+
       if (seenLink[href]) {
         return;
       }
-      seenLink[href] = true;
-      if (_.some(innerLinksPrefix.map(x => href.indexOf(x) === 0))) {
-        if (href.indexOf('http://')) {
-          const url = href.substring(href.indexOf('/', 'http://'.length));
-          innerLinks.push(url || '/');
-        } else {
-          innerLinks.push(href);
-        }
+
+      if (href.indexOf('http://localhost') === 0) {
+        innerLinks.push(href);
       } else {
         outerLinks.push(href);
       }
@@ -79,9 +88,13 @@ function processInnerLink(i, cb) {
   });
 }
 
-function processPage(url, $) {
+function processPage(url, $, html) {
   if (!$('head meta[charset="utf-8"]').length) {
     console.log(url, 'missing <meta charset="utf-8">');
+  }
+
+  if (html.indexOf('<!DOCTYPE html>') !== 0) {
+    console.log(url, 'bad <!DOCTYPE html>');
   }
 
   const title = $('head title');
@@ -130,8 +143,29 @@ function processPage(url, $) {
   }
 }
 
-function getInnerLink(i) {
-  return root + innerLinks[i];
+function endsWith(str, suffix) {
+	return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+function removeNonIndexablePart(html) {
+  const start = 'googleoff: all';
+  const end = 'googleon: all';
+
+	for (;;) {
+    let startIndex = html.indexOf(start);
+    if (startIndex === -1) {
+      break;
+    }
+
+    let endIndex = html.indexOf(end);
+    if (endIndex === -1) {
+      throw new Error('Failed to find end.');
+    }
+
+    html = html.substring(0, startIndex) + html.substring(endIndex + end.length);
+	}
+
+	return html;
 }
 
 function main(cb) {
