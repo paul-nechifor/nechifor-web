@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install nginx php7.0-fpm supervisor -y && \
+    apt-get install nginx php7.0-fpm php7.0-sqlite3 supervisor -y && \
     rm -fr /var/lib/apt/lists/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
@@ -47,9 +47,13 @@ ADD projects/paul-scripts/dist /app/paul-scripts
 ADD projects/minimul/dist /app/minimul
 ADD projects/dotfiles/docs/* /app/dotfiles/
 ADD projects/torus-cycle/dist /app/torus-cycle
+ADD projects/timr/dist /app/timr
+ADD projects/timr/libs/Smarty-2.6.28/libs /usr/share/php/Smarty
 
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
+
+RUN chmod -R 777 /app/timr/sabloane/compile
 
 EXPOSE 80
 

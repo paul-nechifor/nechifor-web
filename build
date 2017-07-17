@@ -45,6 +45,7 @@ main() {
     get_project dotfiles
     get_project torus-cycle
     get_project nechifor-web-base
+    get_project timr
 
     process_keygen_radio
 
