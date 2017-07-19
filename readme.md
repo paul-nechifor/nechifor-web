@@ -13,6 +13,20 @@ Afterwards you can run it for testing purposes with:
 
     ./build run
 
+## Sites left to add.
+
+- multilatex
+- negura-server
+- kant-generator-pro (in js)
+- thunder tactics
+- cv
+- 1930
+- spheres image
+- tinutok
+- rpgadvance
+- space-hoarder os package
+- phonetic-english
+
 ## TODO
 
 - Add `<meta name='description' ...> to all pages.
