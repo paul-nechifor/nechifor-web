@@ -49,6 +49,7 @@ ADD projects/dotfiles/docs/* /app/dotfiles/
 ADD projects/torus-cycle/dist /app/torus-cycle
 ADD projects/timr/dist /app/timr
 ADD projects/timr/libs/Smarty-2.6.28/libs /usr/share/php/Smarty
+ADD projects/rpgadvance/dist /app/rpgadvance
 
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
