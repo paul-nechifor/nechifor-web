@@ -16,7 +16,7 @@ function loadPage(url, cb) {
       return cb(err);
     }
     html = removeNonIndexablePart(html);
-    cb(null, cheerio.load(html), html);
+    cb(null, cheerio.load(html), html, res.request.uri.href);
   });
 }
 
@@ -47,12 +47,12 @@ function processInnerLink(i, cb) {
   }
   seenLink[url] = true;
 
-  loadPage(url, (err, $, html) => {
+  loadPage(url, (err, $, html, actualUrl) => {
     if (err) {
       return cb(err);
     }
 
-    processPage(url, $, html);
+    processPage(actualUrl, $, html);
 
     $('a[href]').each(function () {
       let href = $(this).attr('href');
@@ -65,7 +65,7 @@ function processInnerLink(i, cb) {
         if (href[0] === '/') {
           href = root + href;
         } else {
-          href = URL.resolve(url, href);
+          href = URL.resolve(actualUrl, href);
         }
       }
 
