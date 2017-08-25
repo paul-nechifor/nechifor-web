@@ -4,11 +4,4 @@ logo=/cgit.png
 # TODO: Don't ban everything.
 robots=noindex, nofollow
 
-# if cgit messes up links, use a virtual-root. For example has cgit.example.org/ this value:
-# virtual-root=/
-
-# repo.url=test
-# repo.path=/git/test/.git
-# repo.desc=Sometest
-
 scan-path=/git/
