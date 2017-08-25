@@ -1,0 +1,29 @@
+#!/usr/bin/env python2
+
+from json import load
+from os import system
+from os.path import dirname, join
+from time import sleep
+from urllib2 import urlopen
+
+
+def main():
+    repo_dir = join(dirname(__file__), 'repos')
+    system("mkdir -p '%s'" % repo_dir)
+    for repo in get_repos():
+        system("cd '%s'; git clone '%s'" % (repo_dir, repo['clone_url']))
+
+
+def get_repos():
+    for i in xrange(1, 100):
+        url = 'https://api.github.com/users/paul-nechifor/repos?page=%s' % i
+        repos = load(urlopen(url))
+        if not repos:
+            return
+        for x in repos:
+            yield x
+            sleep(2)
+
+
+if __name__ == '__main__':
+    main()

@@ -78,7 +78,7 @@ build_docker() {
 }
 
 cmd_run() {
-    docker run -it -p 80:80 -v "$PWD"/git:/git --rm nechifor-web:"$version" /usr/bin/supervisord -n -c /etc/supervisord.conf
+    docker run -it -p 80:80 -v "$PWD"/repos:/git --rm nechifor-web:"$version" /usr/bin/supervisord -n -c /etc/supervisord.conf
 }
 
 process_keygen_radio() {
