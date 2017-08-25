@@ -1,11 +1,23 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install nginx php7.0-fpm php7.0-sqlite3 supervisor -y && \
+    apt-get install \
+        nginx \
+        php7.0-fpm \
+        php7.0-sqlite3 \
+        supervisor \
+        fcgiwrap \
+        git \
+        cgit \
+        highlight \
+    -y && \
     rm -fr /var/lib/apt/lists/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
-    mkdir /run/php && chmod 777 /run/php && \
+    mkdir /run/php && \
+    chmod 777 /run/php && \
+    mkdir /var/run/fcgiwrap && \
+    chown www-data:www-data /var/run/fcgiwrap && \
     sed -i \
     -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
     /etc/php/7.0/fpm/pool.d/www.conf
@@ -51,6 +63,7 @@ ADD projects/timr/dist /app/timr
 ADD projects/timr/libs/Smarty-2.6.28/libs /usr/share/php/Smarty
 ADD projects/rpgadvance/dist /app/rpgadvance
 
+ADD cgitrc /etc/cgitrc
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
 

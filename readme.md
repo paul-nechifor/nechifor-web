@@ -29,7 +29,7 @@ Afterwards you can run it for testing purposes with:
 
 ## TODO
 
-- Add `<meta name='description' ...> to all pages.
+- Add `<meta name='description' ...>` to all pages.
 
 - Configure Content-Security-Policy for Nginx. See
   https://content-security-policy.com/ . Possible just this:
