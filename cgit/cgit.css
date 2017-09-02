@@ -584,19 +584,6 @@ div#cgit span.age-months {
 div#cgit span.age-years {
 	color: #bbb;
 }
-div#cgit div.footer {
-	margin-top: 0.5em;
-	text-align: center;
-	font-size: 80%;
-	color: #ccc;
-}
-div#cgit div.footer a {
-	color: #ccc;
-	text-decoration: none;
-}
-div#cgit div.footer a:hover {
-	text-decoration: underline;
-}
 div#cgit a.branch-deco {
 	color: #000;
 	margin: 0px 0.5em;
@@ -826,3 +813,7 @@ div#cgit table.blob .kwa { color:#000000; font-weight:bold; }
 div#cgit table.blob .kwb { color:#0057ae; }
 div#cgit table.blob .kwc { color:#000000; font-weight:bold; }
 div#cgit table.blob .kwd { color:#010181; }
+
+/* CUSTOM THINGS */
+
+#cgit > .footer { display: none }

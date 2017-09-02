@@ -63,12 +63,12 @@ ADD projects/timr/dist /app/timr
 ADD projects/timr/libs/Smarty-2.6.28/libs /usr/share/php/Smarty
 ADD projects/rpgadvance/dist /app/rpgadvance
 
+RUN chmod -R 777 /app/timr/sabloane/compile
+
 ADD cgit/* /usr/lib/cgit/
 ADD cgitrc /etc/cgitrc
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD supervisord.conf /etc/supervisord.conf
-
-RUN chmod -R 777 /app/timr/sabloane/compile
 
 EXPOSE 80
 

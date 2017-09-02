@@ -1,0 +1,7 @@
+nechifor-web:
+  build: .
+  command: ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+  ports:
+    - 80:80
+  volumes:
+    - ./repos:/git
