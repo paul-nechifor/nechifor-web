@@ -31,6 +31,8 @@ Afterwards you can run it for testing purposes with:
 
 - Add `<meta name='description' ...>` to all pages.
 
+- Add `View the Git source` to all the pages.
+
 - Configure Content-Security-Policy for Nginx. See
   https://content-security-policy.com/ . Possible just this:
 
