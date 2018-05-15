@@ -9,9 +9,13 @@ To build everything run:
 
     ./build
 
-Afterwards you can run it for testing purposes with:
+Afterwards you can start the site with:
 
     ./build run
+
+...and run this to see all the errors:
+
+    ./build test
 
 ## Sites left to add.
 

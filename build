@@ -87,4 +87,10 @@ process_keygen_radio() {
     rsync -a --del tunes/files/ dist/tunes/
 }
 
+cmd_test() {
+    cd "$root/tests"
+    [[ -e node_modules ]] || npm i
+    npm test
+}
+
 main "$@"
