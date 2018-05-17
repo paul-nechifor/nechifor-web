@@ -12,5 +12,8 @@ side-by-side-diffs=1
 virtual-root=/
 summary-log=100
 max-commit-count=300
+remove-suffix=1
+readme=master:readme.md
+readme=master:readme.rst
 
 scan-path=/git

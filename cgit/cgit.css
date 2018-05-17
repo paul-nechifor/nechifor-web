@@ -27,7 +27,7 @@ div#cgit table#header {
 }
 
 div#cgit table#header td.logo {
-	width: 96px;
+	width: 74px;
 	vertical-align: top;
 }
 
@@ -112,7 +112,6 @@ div#cgit div.content {
 	padding: 2em;
 	border-bottom: solid 3px #ccc;
 }
-
 
 div#cgit table.list {
 	width: 100%;
@@ -228,8 +227,10 @@ div#cgit td#content {
 }
 
 div#cgit div#summary {
-	vertical-align: top;
 	margin-bottom: 1em;
+	vertical-align: top;
+  font-family: monospace;
+  white-space: pre;
 }
 
 div#cgit table#downloads {
