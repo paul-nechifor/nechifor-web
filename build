@@ -90,7 +90,7 @@ process_keygen_radio() {
 cmd_test() {
     cd "$root/tests"
     [[ -e node_modules ]] || npm i
-    npm test
+    npm test | tail -n +5 | sort -u
 }
 
 main "$@"

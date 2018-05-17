@@ -7,7 +7,7 @@ const request = require('request');
 const root = process.env.site || 'http://localhost';
 
 const outerLinks = [];
-const innerLinks = [root + '/'];
+const innerLinks = [{referer: null, url: root + '/'}];
 const seenLink = {};
 
 function loadPage(url, cb) {
@@ -16,7 +16,7 @@ function loadPage(url, cb) {
       return cb(err);
     }
     html = removeNonIndexablePart(html);
-    cb(null, cheerio.load(html), html, res.request.uri.href);
+    cb(null, cheerio.load(html), html, res.request.uri.href, res.statusCode);
   });
 }
 
@@ -41,18 +41,18 @@ function loadAllLinks(cb) {
 }
 
 function processInnerLink(i, cb) {
-  const url = innerLinks[i];
+  const {url, referer} = innerLinks[i];
   if (seenLink[url]) {
     return cb();
   }
   seenLink[url] = true;
 
-  loadPage(url, (err, $, html, actualUrl) => {
+  loadPage(url, (err, $, html, actualUrl, statusCode) => {
     if (err) {
       return cb(err);
     }
 
-    processPage(actualUrl, $, html);
+    processPage(actualUrl, $, html, statusCode, referer);
 
     $('a[href]').each(function () {
       let href = $(this).attr('href');
@@ -78,7 +78,7 @@ function processInnerLink(i, cb) {
       }
 
       if (href.indexOf('http://localhost') === 0) {
-        innerLinks.push(href);
+        innerLinks.push({url: href, referer: url});
       } else {
         outerLinks.push(href);
       }
@@ -88,23 +88,27 @@ function processInnerLink(i, cb) {
   });
 }
 
-function processPage(url, $, html) {
+function processPage(url, $, html, statusCode, referer) {
+  if (statusCode >= 400) {
+    console.log('bad status code', statusCode, url, 'coming from', referer);
+  }
+
   if (!$('head meta[charset="utf-8"]').length) {
-    console.log(url, 'missing <meta charset="utf-8">');
+    console.log('missing <meta charset="utf-8">', url);
   }
 
   if (html.indexOf('<!DOCTYPE html>') !== 0) {
-    console.log(url, 'bad <!DOCTYPE html>');
+    console.log('bad <!DOCTYPE html>', url);
   }
 
   const title = $('head title');
   if (!title.length || title.text().length < 5) {
-    console.log(url, 'bad head title');
+    console.log('bad head title', url);
   }
 
   const equiv = $('head meta[http-equiv="x-ua-compatible"]');
   if (!equiv.length || equiv.attr('content') !== 'ie=edge') {
-    console.log(url, 'bad http-equiv ie=edge');
+    console.log('bad http-equiv ie=edge', url);
   }
 
   const viewport = $('head meta[name=viewport]');
@@ -112,34 +116,34 @@ function processPage(url, $, html) {
     !viewport.length ||
     viewport.attr('content') !== 'width=device-width,initial-scale=1'
   ) {
-    console.log(url, 'bad meta viewport');
+    console.log('bad meta viewport', url);
   }
 
   const largeIcon = $('head link[rel="apple-touch-icon"]');
   if (!largeIcon.length || largeIcon.attr('href') !== '/favicon152.png') {
-    console.log(url, 'bad link[rel="apple-touch-icon"]');
+    console.log('bad link[rel="apple-touch-icon"]', url);
   }
 
   if (!$('a[href="/"]').length) {
-    console.log(url, 'missing link to home');
+    console.log('missing link to home', url);
   }
 
   if (!$('a[href="/projects"]').length) {
-    console.log(url, 'missing link to projects');
+    console.log('missing link to projects', url);
   }
 
   const lang = $('html').attr('lang');
   if (lang !== 'en' && lang !== 'ro') {
-    console.log(url, 'missing <html lang="...">');
+    console.log('missing <html lang="...">', url);
   }
 
   const desc = $('meta[description]');
   if (!desc.length || desc.text().length < 5) {
-    console.log(url, 'bad <meta name="description" ...>');
+    console.log('bad <meta name="description" ...>', url);
   }
 
   if (!$('h1').length) {
-    console.log(url, 'missing <h1>');
+    console.log('missing <h1>', url);
   }
 }
 
