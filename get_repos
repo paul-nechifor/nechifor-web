@@ -11,7 +11,18 @@ def main():
     repo_dir = join(dirname(__file__), 'repos')
     system("mkdir -p '%s'" % repo_dir)
     for repo in get_repos():
-        system("cd '%s'; git clone '%s'" % (repo_dir, repo['clone_url']))
+        system("""
+            cd '{dir}'
+            git clone --mirror '{repo}'
+            cd '{name}'
+            git config cgit.desc "{desc}"
+            git config cgit.owner 'Paul'
+        """.format(
+            dir=repo_dir,
+            repo=repo['clone_url'],
+            name=repo['clone_url'].strip('/').split('/')[-1],
+            desc=(repo['description'] or '...').replace('"', r'\"').encode('utf8'),
+        ))
 
 
 def get_repos():

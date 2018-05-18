@@ -53,6 +53,8 @@ Afterwards you can start the site with:
 
 - Hide Nginx server version. Same for PHP.
 
+- Render the readme.md file to HTML by setting `about-filter` to something.
+
 - Add a sitemap.
 
 - Make sure to mark things that are generated as non-indexable by Google.

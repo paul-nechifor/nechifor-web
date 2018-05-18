@@ -4,16 +4,20 @@ logo=/cgit.png
 # TODO: Don't ban everything.
 robots=noindex, nofollow
 
+enable-http-clone=1
+clone-url=http://git.nechifor.net/$CGIT_REPO_URL
+
 enable-commit-graph=1
 max-repo-count=300
 root-title=Paul Nechifor's Git Repositories.
 root-desc=My self hosted public repositories.
 side-by-side-diffs=1
 virtual-root=/
-summary-log=100
+summary-log=200
 max-commit-count=300
 remove-suffix=1
 readme=master:readme.md
 readme=master:readme.rst
+enable-git-config=1
 
 scan-path=/git
