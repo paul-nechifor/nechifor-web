@@ -137,8 +137,8 @@ function processPage(url, $, html, statusCode, referer) {
     console.log('missing <html lang="...">', url);
   }
 
-  const desc = $('meta[description]');
-  if (!desc.length || desc.text().length < 5) {
+  const desc = $('meta[name=description]');
+  if (!desc.length || desc.attr('content').length < 5) {
     console.log('bad <meta name="description" ...>', url);
   }
 

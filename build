@@ -90,7 +90,12 @@ process_keygen_radio() {
 cmd_test() {
     cd "$root/tests"
     [[ -e node_modules ]] || npm i
-    npm test | tail -n +5 | sort -u
+    npm test | tail -n +5 | sort -u > ../all.log
+    cd ..
+    local args="/(rstsd|italia-fascista|paul-scripts|rpgadvance|college-website|college-website-2|meet-firefox|sibf|minimul)/"
+    egrep "$args" all.log > secondary.log
+    egrep -v "$args" all.log > primary.log
+    rm all.log
 }
 
 main "$@"
