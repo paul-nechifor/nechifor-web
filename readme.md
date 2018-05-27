@@ -35,6 +35,9 @@ Afterwards you can start the site with:
 
 - Add `<meta name='description' ...>` to all pages.
 
+- Add a test phase that goes over every external JS/CSS/images/etc resources.
+  The idea being to internalise everything.
+
 - Add `View the Git source` to all the pages.
 
 - Configure Content-Security-Policy for Nginx. See

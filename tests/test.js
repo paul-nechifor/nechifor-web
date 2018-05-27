@@ -97,7 +97,7 @@ function processPage(url, $, html, statusCode, referer) {
     console.log('missing <meta charset="utf-8">', url);
   }
 
-  if (html.indexOf('<!DOCTYPE html>') !== 0) {
+  if (html.toLowerCase().indexOf('<!doctype html>') !== 0) {
     console.log('bad <!DOCTYPE html>', url);
   }
 
