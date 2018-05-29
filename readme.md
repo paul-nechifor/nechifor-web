@@ -33,6 +33,8 @@ Afterwards you can start the site with:
 
 ## TODO
 
+- Spell check all pages.
+
 - Add `<meta name='description' ...>` to all pages.
 
 - Add a test phase that goes over every external JS/CSS/images/etc resources.
